@@ -1,0 +1,175 @@
+:root {
+  --ink: #1f2933;
+  --ink-soft: #3e4c59;
+  --muted: #7b8794;
+  --accent: #0f766e;
+  --accent-soft: #e6f2f1;
+  --accent-line: #99c7c2;
+  --rule: #e4e7eb;
+  --code-bg: #f5f7fa;
+  --code-ink: #344256;
+  --page-bg: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+@page {
+  size: A4;
+  margin: 18mm 16mm 20mm 16mm;
+}
+
+html { font-size: 11pt; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--page-bg);
+  font-family: "Segoe UI", "Inter", -apple-system, system-ui, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.62;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.doc { max-width: 100%; }
+
+/* ---------- Headings ---------- */
+h1, h2, h3, h4 {
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.25;
+  break-after: avoid;
+}
+h1 {
+  font-size: 2.0rem;
+  margin: 0 0 0.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--accent);
+  letter-spacing: -0.01em;
+}
+h2 {
+  font-size: 1.32rem;
+  margin: 2.1rem 0 0.7rem;
+  padding-left: 0.6rem;
+  border-left: 4px solid var(--accent);
+  color: var(--accent);
+}
+h3 {
+  font-size: 1.08rem;
+  margin: 1.4rem 0 0.5rem;
+  color: var(--ink-soft);
+}
+h3 code {
+  font-size: 0.95em;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 0;
+  padding: 1px 7px;
+}
+
+/* ---------- Lead blockquote (one-liner) ---------- */
+blockquote {
+  margin: 0.9rem 0 1.3rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  color: var(--ink-soft);
+  font-size: 1.04rem;
+  break-inside: avoid;
+}
+blockquote p { margin: 0; }
+
+/* ---------- Text ---------- */
+p { margin: 0.55rem 0; }
+ul, ol { margin: 0.55rem 0; padding-left: 1.4rem; }
+li { margin: 0.2rem 0; }
+li::marker { color: var(--accent); }
+strong { color: var(--ink); font-weight: 700; }
+a { color: var(--accent); text-decoration: none; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 1.6rem 0; }
+
+/* ---------- Code ---------- */
+code {
+  font-family: "Cascadia Code", "JetBrains Mono", "Consolas", "SF Mono", monospace;
+  font-size: 0.86em;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  padding: 1.5px 5px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  break-inside: avoid;
+  white-space: pre-wrap;        /* print: wrap instead of clipping */
+  overflow-wrap: anywhere;
+}
+pre code { background: none; border: 0; padding: 0; font-size: 0.84em; white-space: inherit; overflow-wrap: inherit; }
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.9rem 0 1.3rem;
+  font-size: 0.92rem;
+}
+thead { display: table-header-group; }
+th {
+  background: var(--accent-soft);
+  color: var(--accent);
+  text-align: left;
+  font-weight: 700;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--accent-line);
+}
+td {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink-soft);
+}
+tbody tr { break-inside: avoid; }
+tbody tr:nth-child(even) td { background: #fafbfc; }
+td code, th code { font-size: 0.86em; }
+
+/* compact the top meta table + hide its empty header row */
+.doc > table:first-of-type { max-width: 460px; }
+.doc > table:first-of-type thead { display: none; }
+
+/* ---------- Diagram (inline SVG) ---------- */
+.diagram {
+  break-inside: avoid;
+  text-align: center;
+  margin: 1.1rem 0;
+}
+.diagram svg {
+  max-width: 100% !important;
+  height: auto;
+  max-height: 230mm;            /* never overflow a printed page */
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: #fff;
+  padding: 0.6rem;
+}
+.diagram svg, .diagram svg * {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* raster fallback if a doc still uses an image */
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 230mm;
+  height: auto;
+  width: auto;
+  margin: 1.1rem auto;
+  padding: 0.6rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: #fff;
+  break-inside: avoid;
+}

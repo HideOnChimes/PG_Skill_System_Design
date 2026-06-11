@@ -1,0 +1,10 @@
+{
+  "name": "system-design-pg-render",
+  "private": true,
+  "description": "Render System Design PG .md docs to .mmd + .pdf (inline SVG diagram, no PNG).",
+  "dependencies": {
+    "@mermaid-js/layout-elk": "*",
+    "@mermaid-js/mermaid-cli": "^11",
+    "markdown-it": "^14"
+  }
+}
