@@ -32,15 +32,15 @@ The installer copies the skill to `~/.claude/skills/system-design-pg/` and runs 
 
 Open a **new** Claude Code session in any project. Two ways to trigger it:
 
-**1. Automatic (recommended)** — just describe the system. Claude detects the skill from its description and fires it on its own:
-
-> "Design a token-bucket rate limiter library for an API gateway — I want the doc, class diagram and a PDF."
-
-**2. Explicit** — force it with the slash command, then your idea:
+**1. Slash command (recommended)** — type `/system-design-pg` followed by your idea:
 
 ```
 /system-design-pg design an inventory system for a Unity game with stackable items and save persistence
 ```
+
+**2. Natural language** — just describe the system; Claude detects the skill automatically:
+
+> "Design a token-bucket rate limiter library for an API gateway — I want the doc, class diagram and a PDF."
 
 Either way you get three files per system (`<slug>.md`, `<slug>.mmd`, `<slug>.pdf`). Pass several ideas at once and it produces one file set per system.
 
